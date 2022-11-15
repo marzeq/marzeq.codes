@@ -6,6 +6,8 @@ import Tooltip from "./Components/Tooltip"
 import { Favicon, Title } from "./main"
 import { Component } from "./util"
 
+const DISCORD_TAG = "marzeq#0001"
+
 const App = () => {
   const [copied, setCopied] = useState(false)
 
@@ -58,11 +60,9 @@ const App = () => {
           <div className="flex justify-center mt-4 text-2xl font-medium gap-5">
             <Link href="https://github.com/marzeq">GitHub</Link>
             <Link href="https://twitter.com/marzeqpog">Twitter</Link>
-            <Tooltip setHovered={hovered => {
-              if (!hovered && copied) {
-                setCopied(false)
-              }
-            }} text={copied ? "Copied to clipboard!" : "Copy tag to clipboard"}><CopyClick styleAs="link" setClicked={setCopied} text="marzeq#0001">Discord</CopyClick></Tooltip>
+            <Tooltip setHovered={hovered => !hovered && copied && setCopied(false)} text={copied ? "Copied to clipboard!" : `Copy ${DISCORD_TAG} to clipboard and open Discord`}>
+              <CopyClick styleAs="link" setClicked={setCopied} text={DISCORD_TAG}>Discord</CopyClick>
+            </Tooltip>
             {/* <Tooltip text="marzeqmarzeq@gmail.com"><Link href="mailto:marzeqmarzeq@gmail.com">Email</Link></Tooltip> */}
           </div>
 
@@ -70,8 +70,8 @@ const App = () => {
             <h2 className="text-3xl font-bold">My recent projects</h2>
 
             <div className="flex flex-col gap-3 text-left">
-              <Project name="marzeq.codes" description="This website" link="/" />
-              <Project name="selfhost-discord-music-bot" description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot" />
+              <Project name="marzeq.codes" oss description="This website" link="/" />
+              <Project name="selfhost-discord-music-bot" oss description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot" />
             </div>
           </div>
         </div>
@@ -86,12 +86,15 @@ const Project: Component<{
   name: string
   description: string
   link?: string
-}> = ({ name, description, link }) => {
+  oss?: boolean
+  ossUrl?: string
+}> = ({ name, description, link, oss, ossUrl }) => {
   return (
     <div className={`max-w-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300 rounded p-4 ${link ? "cursor-pointer" : ""}`}>
       <a href={link} target="_blank">
         <h3 className="text-xl font-bold">{name}</h3>
         <p className="mt-2 w-full text-base">{description}</p>
+        {oss ? (ossUrl ? <a href={ossUrl} target="_blank" className="mt-2 text-sm text-blue-500 hover:text-blue-300 hover:underline transition duration-300">Source code</a> : <span className="mt-2 text-sm">Source code available soon</span>) : null}
       </a>
     </div>
   )
