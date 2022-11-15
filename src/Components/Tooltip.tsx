@@ -24,7 +24,7 @@ const Tooltip: Component<{
     }}>
       {hovered && (
         animate ? (
-          <AppearAnimation time={0.1} delay={0}>
+          <AppearAnimation time={0.25} delay={0}>
             {tTip}
           </AppearAnimation>
         ) : (
