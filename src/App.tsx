@@ -18,7 +18,6 @@ const App = () => {
       <div className="flex justify-center">
         <div className="mx-auto px-4 py-12 max-w-3xl flex flex-col items-center gap-3">
           <h1 className="text-4xl font-bold">Hi! I'm marzeq!</h1>
-
           <TypeAnimation className="text-2xl font-medium text-center"
             sequence={[
               "I write code.",
@@ -51,7 +50,7 @@ const App = () => {
               400,
               "I do lots of other stuff.",
               400,
-              "I do lots of other stuff. To see that \"other stuff\", click on one of the links below.",
+              "To learn more about me, click on one of the links below.",
             ]}
           />
 
@@ -70,14 +69,16 @@ const App = () => {
             <h2 className="text-3xl font-bold">My recent projects</h2>
 
             <div className="flex flex-col gap-3 text-left">
+              <Project name="👀" description="👀 In progress... Check my social media for possible updates." />
               <Project name="marzeq.codes" oss description="This website" link="/" />
               <Project name="selfhost-discord-music-bot" oss description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot" />
+              <Tooltip text="I cannot guarantee their code is good"><Project name="Older projects" description="See all my older projects on GitHub." link="https://github.com/marzeq?tab=repositories" /></Tooltip>
             </div>
           </div>
         </div>
       </div>
     </main>
-    </>)
+  </>)
 }
 
 export default App
@@ -90,12 +91,12 @@ const Project: Component<{
   ossUrl?: string
 }> = ({ name, description, link, oss, ossUrl }) => {
   return (
-    <div className={`max-w-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300 rounded p-4 ${link ? "cursor-pointer" : ""}`}>
-      <a href={link} target="_blank">
+    <a href={link} target="_blank">
+      <div className="max-w-xl mx-6 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300 rounded p-4 cursor-pointer">
         <h3 className="text-xl font-bold">{name}</h3>
         <p className="mt-2 w-full text-base">{description}</p>
         {oss ? (ossUrl ? <a href={ossUrl} target="_blank" className="mt-2 text-sm text-blue-500 hover:text-blue-300 hover:underline transition duration-300">Source code</a> : <span className="mt-2 text-sm">Source code available soon</span>) : null}
-      </a>
-    </div>
+      </div>
+    </a>
   )
 }
