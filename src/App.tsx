@@ -80,9 +80,11 @@ const Project: Component<{
   link?: string
 }> = ({ name, description, link }) => {
   return (
-    <div className={`max-w-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300 rounded p-4 ${link ? "cursor-pointer" : ""}`} onClick={() => link ? window.open(link, "_blank") : null}>
-      <h3 className="text-xl font-bold">{name}</h3>
-      <p className="mt-2 w-full text-base">{description}</p>
+    <div className={`max-w-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300 rounded p-4 ${link ? "cursor-pointer" : ""}`}>
+      <a href={link} target="_blank">
+        <h3 className="text-xl font-bold">{name}</h3>
+        <p className="mt-2 w-full text-base">{description}</p>
+      </a>
     </div>
   )
 }
