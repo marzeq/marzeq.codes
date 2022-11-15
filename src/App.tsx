@@ -70,7 +70,7 @@ const App = () => {
 
             <div className="flex flex-col gap-3 text-left">
               <Project name="👀" description="👀 In progress... Check my social media for possible updates." />
-              <Project name="marzeq.codes" oss description="This website" link="/" />
+              <Project name="marzeq.codes" oss ossUrl="https://github.com/marzeq/new-website" description="This website" link="/" />
               <Project name="selfhost-discord-music-bot" oss description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot" />
               <Tooltip text="I cannot guarantee their code is good"><Project name="Older projects" description="See all my older projects on GitHub." link="https://github.com/marzeq?tab=repositories" /></Tooltip>
             </div>
