@@ -1,10 +1,14 @@
+import { useState } from "react"
 import { TypeAnimation } from "react-type-animation"
+import CopyClick from "./Components/CopyClick"
 import Link from "./Components/Link"
 import Tooltip from "./Components/Tooltip"
 import { Favicon, Title } from "./main"
 import { Component } from "./util"
 
 const App = () => {
+  const [copied, setCopied] = useState(false)
+
   return (<>
     <Title>marzeq.codes</Title>
     <Favicon src="/favicon.png" />
@@ -54,7 +58,11 @@ const App = () => {
           <div className="flex justify-center mt-4 text-2xl font-medium gap-5">
             <Link href="https://github.com/marzeq">GitHub</Link>
             <Link href="https://twitter.com/marzeqpog">Twitter</Link>
-            <Tooltip text="marzeq#0001"><Link href="https://discord.com/users/500669086947344384">Discord</Link></Tooltip>
+            <Tooltip setHovered={hovered => {
+              if (!hovered && copied) {
+                setCopied(false)
+              }
+            }} text={copied ? "Copied to clipboard!" : "Copy tag to clipboard"}><CopyClick styleAs="link" setClicked={setCopied} text="marzeq#0001">Discord</CopyClick></Tooltip>
             {/* <Tooltip text="marzeqmarzeq@gmail.com"><Link href="mailto:marzeqmarzeq@gmail.com">Email</Link></Tooltip> */}
           </div>
 
