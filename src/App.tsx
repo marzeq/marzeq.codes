@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { TypeAnimation } from "react-type-animation"
 import CopyClick from "./Components/CopyClick"
-import Keyframes from "./Components/Keyframes"
 import Link from "./Components/Link"
 import Tooltip from "./Components/Tooltip"
 import { Favicon, Title } from "./main"
