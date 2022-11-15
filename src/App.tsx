@@ -60,7 +60,7 @@ const App = () => {
           <div className="flex justify-center mt-4 text-2xl font-medium gap-5">
             <Link href="https://github.com/marzeq">GitHub</Link>
             <Link href="https://twitter.com/marzeqpog">Twitter</Link>
-            <Tooltip setHovered={hovered => !hovered && copied && setCopied(false)} text={copied ? "Copied to clipboard!" : `Copy ${DISCORD_TAG} to clipboard and open Discord`}>
+            <Tooltip setHovered={hovered => !hovered && copied && setCopied(false)} text={copied ? "Copied to clipboard!" : `Copy ${DISCORD_TAG} to clipboard`}>
               <CopyClick styleAs="link" setClicked={setCopied} text={DISCORD_TAG}>Discord</CopyClick>
             </Tooltip>
             {/* <Tooltip text="marzeqmarzeq@gmail.com"><Link href="mailto:marzeqmarzeq@gmail.com">Email</Link></Tooltip> */}
