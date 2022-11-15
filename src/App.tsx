@@ -55,7 +55,7 @@ const App = () => {
             <Link href="https://github.com/marzeq">GitHub</Link>
             <Link href="https://twitter.com/marzeqpog">Twitter</Link>
             <Tooltip text="marzeq#0001"><Link href="https://discord.com/users/500669086947344384">Discord</Link></Tooltip>
-            <Tooltip text="marzeqmarzeq@gmail.com"><Link href="mailto:marzeqmarzeq@gmail.com">Email</Link></Tooltip>
+            {/* <Tooltip text="marzeqmarzeq@gmail.com"><Link href="mailto:marzeqmarzeq@gmail.com">Email</Link></Tooltip> */}
           </div>
 
           <div className="flex flex-col justify-center mt-12 text-2xl font-medium gap-5 text-center">
