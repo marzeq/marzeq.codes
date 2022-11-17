@@ -9,6 +9,7 @@ const DISCORD_TAG = "marzeq#0001"
 
 const App = () => {
   const [copied, setCopied] = useState(false)
+  const [easterEgg, setEasterEgg] = useState(false)
 
   return (<>
     <main className="bg-gray-100 text-gray-900 min-h-screen dark:bg-gray-900 dark:text-gray-100 font-mono">
@@ -56,16 +57,20 @@ const App = () => {
           <div className="flex justify-center mt-4 text-2xl font-medium gap-5">
             <Link href="https://github.com/marzeq">GitHub</Link>
             <Link href="https://twitter.com/marzeqpog">Twitter</Link>
-            <Tooltip setHovered={hovered => !hovered && copied && setCopied(false)} text={copied ? "Copied to clipboard!" : `Copy ${DISCORD_TAG} to clipboard`}>
+            {copied ? (
+              <Tooltip setHovered={hovered => !hovered && copied && setCopied(false)} text="Copied tag!">
+                <CopyClick styleAs="link" setClicked={setCopied} text={DISCORD_TAG}>Discord</CopyClick>
+              </Tooltip>
+            ) : (
               <CopyClick styleAs="link" setClicked={setCopied} text={DISCORD_TAG}>Discord</CopyClick>
-            </Tooltip>
+            )}
           </div>
 
           <div className="flex flex-col justify-center mt-12 text-2xl font-medium gap-5 text-center">
             <h2 className="text-3xl font-bold">My recent projects</h2>
 
             <div className="flex flex-col gap-3 text-left">
-              <Project name="👀" description="👀 In progress... Check my social media for possible updates." />
+              <Project name="👀" description="In progress... I'm always working on something, so it's worth checking up on me every now and then." />
               <Project name="marzeq.codes" oss="https://github.com/marzeq/new-website" description="This website" link="/" />
               <Project name="selfhost-discord-music-bot" oss description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot">
                 <BlueLink href="/#findme" notBlank>Contact me</BlueLink> if you want me to give you access to my instance.
@@ -76,6 +81,14 @@ const App = () => {
         </div>
       </div>
     </main>
+
+    <div className="fixed bottom-0 right-0 m-4">
+      <img src="/rotation.gif" alt="cat spinning" className={`${easterEgg ? "w-48 h-48" : "w-16 h-16 opacity-[0.02]"} cursor-pointer`} onClick={() => setEasterEgg(!easterEgg)} />
+      {easterEgg && <audio id="shpin" src="/shpin.mp3" autoPlay loop onPlay={() => {
+        const audio = document.getElementById("shpin") as HTMLAudioElement
+        audio.volume = 0.3
+      }} />}
+    </div>
   </>)
 }
 
