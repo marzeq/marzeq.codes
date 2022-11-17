@@ -64,6 +64,7 @@ const App = () => {
             ) : (
               <CopyClick styleAs="link" setClicked={setCopied} text={DISCORD_TAG}>Discord</CopyClick>
             )}
+            <Link href="https://blog.marzeq.codes/" notBlank>Blog</Link>
           </div>
 
           <div className="flex flex-col justify-center mt-12 text-2xl font-medium gap-5 text-center">
@@ -71,7 +72,8 @@ const App = () => {
 
             <div className="flex flex-col gap-3 text-left">
               <Project name="👀" description="In progress... I'm always working on something, so it's worth checking up on me every now and then." />
-              <Project name="marzeq.codes" oss="https://github.com/marzeq/new-website" description="This website" link="/" />
+              <Project name="blog.marzeq.codes" oss="https://github.com/marzeq/blog.marzeq.codes/" description="My blog! It's a static site made with Astro. I'm not sure if I'll post frequently, but I'll try to keep it updated." link="https://blog.marzeq.codes/" notBlank />
+              <Project name="marzeq.codes" oss="https://github.com/marzeq/marzeq.codes/" description="This website" link="/" />
               <Project name="selfhost-discord-music-bot" oss description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot">
                 <BlueLink href="/#findme" notBlank>Contact me</BlueLink> if you want me to give you access to my instance.
               </Project>
@@ -108,11 +110,12 @@ const Project: Component<{
   name: string
   description: string
   link?: string
+  notBlank?: boolean
   oss?: boolean | string
   children?: ReactNode
-}> = ({ name, description, link, oss, children }) => {
+}> = ({ name, description, link, oss, children, notBlank }) => {
   return (
-    <a href={link} target="_blank">
+    <a href={link} target={!notBlank ? "_blank" : undefined}>
       <div className="select-none max-w-xl border-x-2 border-gray-500 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300 rounded p-4 cursor-pointer">
         <h3 className="text-xl font-bold">{name}</h3>
         <p className="mt-2 w-full text-base">{description}</p>
