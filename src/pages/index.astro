@@ -1,0 +1,100 @@
+---
+import BlueLink from "../components/BlueLink.astro"
+import CopyClick from "../components/CopyClick"
+import EasterEgg from "../components/EasterEgg"
+import Link from "../components/Link.astro"
+import Project from "../components/Project.astro"
+import Tooltip from "../components/Tooltip"
+import { TypeAnimation } from "react-type-animation"
+
+const DISCORD_TAG = "marzeq#0001"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <title>marzeq.codes</title>
+    <meta name="title" content="marzeq.codes" />
+		<meta name="description" content="marzeq's website" />
+  </head>
+  <body>
+    <main class="bg-gray-100 text-gray-900 min-h-screen dark:bg-gray-900 dark:text-gray-100 font-mono">
+      <div class="flex justify-center">
+        <div class="mx-auto px-4 py-12 max-w-3xl flex flex-col items-center gap-3">
+          <h1 class="text-4xl font-bold">Hi! I'm marzeq!</h1>
+          <TypeAnimation client:load className="text-2xl font-medium text-center"
+            sequence={[
+              "I write code.",
+              50,
+              "I write ",
+              400,
+              "I write crappy code.",
+              50,
+              "I write ",
+              400,
+              "I write good-enough code.",
+              50,
+              "I ",
+              400,
+              "I translate stuff.",
+              50,
+              "I ",
+              400,
+              "I proofread stuff.",
+              50,
+              "I ",
+              400,
+              "I play games.",
+              50,
+              "I play ",
+              400,
+              "I play Rocket League.",
+              50,
+              "I ",
+              400,
+              "I do lots of other stuff.",
+              400,
+              "To learn more about me, click on one of the links below.",
+            ]}
+          />
+
+          <h2 class="text-3xl font-bold mt-14" id="findme">Find me</h2>
+
+          <div class="flex justify-center mt-4 text-2xl font-medium gap-5">
+            <Link href="https://github.com/marzeq">GitHub</Link>
+            <Link href="https://twitter.com/marzeqpog">Twitter</Link>
+            <CopyClick client:load styleAs="link" tooltipText={"Copies my tag to clipboard!"} text={DISCORD_TAG}>Discord</CopyClick>
+            <Link href="https://blog.marzeq.codes/" notBlank>Blog</Link>
+          </div>
+
+          <div class="flex flex-col justify-center mt-12 text-2xl font-medium gap-5 text-center">
+            <h2 class="text-3xl font-bold">My recent projects</h2>
+
+            <div class="flex flex-col text-left">
+              <Project name="👀" description="In progress... I'm always working on something, so it's worth checking up on me every now and then." />
+              <Project name="blog.marzeq.codes" oss="https://github.com/marzeq/blog.marzeq.codes/" description="My blog! It's a static site made with Astro. I'm not sure if I'll post frequently, but I'll try to keep it updated." link="https://blog.marzeq.codes/" notBlank />
+              <Project name="marzeq.codes" oss="https://github.com/marzeq/marzeq.codes/" description="This website (also built with Astro)" link="/" />
+              <Project name="selfhost-discord-music-bot" oss description="A self-hostable Docker image of a Discord music bot" link="https://hub.docker.com/repository/docker/marzeq/selfhost-discord-music-bot">
+                <div class="mt-1 text-sm">
+                  <BlueLink href="/#findme" notBlank>Contact me</BlueLink> if you want me to give you access to my instance.
+                </div>
+              </Project>
+              <Tooltip client:load text="I cannot guarantee their code quality is up to my current standards">
+                <Project name="Older projects" description="See all my older projects on GitHub." link="https://github.com/marzeq?tab=repositories" />
+              </Tooltip>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <EasterEgg client:load />
+  </body>
+</html>
